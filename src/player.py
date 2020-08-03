@@ -23,16 +23,16 @@ class Player(pygame.sprite.Sprite):
         return: none
         '''
         print("moved player")
-        if axis == "x" and direction == "+1":
+        if axis == "x" and direction == "+1" and self.rect.x <550:
             self.rect.x += self.speed
             self.changeImage(file)
-        elif axis == "x" and direction == "-1":
+        elif axis == "x" and direction == "-1" and self.rect.x > -35:
             self.rect.x -= self.speed
             self.changeImage(file)
-        elif axis == "y" and direction == "+1":
+        elif axis == "y" and direction == "+1" and self.rect.y < 390:
             self.changeImage(file)
             self.rect.y += self.speed
-        elif axis == "y" and direction == "-1":
+        elif axis == "y" and direction == "-1" and self.rect.y > -35:
             self.rect.y -= self.speed
             self.changeImage(file)
 
