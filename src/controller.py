@@ -3,6 +3,7 @@ import sys
 from src import player
 from src import enemy
 from src import projectile
+from src import background
 
 class Controller:
     def __init__(self, width=640, height=480):
@@ -15,7 +16,7 @@ class Controller:
         self.width = width
         self.height = height
         self.screen = pygame.display.set_mode((self.width, self.height))
-        self.background = pygame.Surface(self.screen.get_size()).convert()
+        self.background = background.Background("assets/galaxy.png",(0,0))
         self.clock = pygame.time.Clock()
         self.FPS = 30  # this final variable dictates the framerate at which the game should run
         self.player = player.Player("Player 1", 50, 80, "assets/player.png")
@@ -67,8 +68,8 @@ class Controller:
             if not keys[pygame.K_UP] and not keys[pygame.K_w] and not keys[pygame.K_DOWN] and not keys[pygame.K_s] and not keys[pygame.K_LEFT] and not keys[pygame.K_a] and not keys[pygame.K_RIGHT] and not keys[pygame.K_d]:
                 self.player.changeImage("assets/player.png")
 
-            self.background.fill((250, 250, 250))
-            self.screen.blit(self.background, (0, 0))
+            self.screen.fill((250, 250, 250))
+            self.screen.blit(self.background.image, self.background.rect)
             self.enemies.draw(self.screen)
             self.projectiles.draw(self.screen)
             print(self.player.image)
