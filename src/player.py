@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
         self.name = name
         self.speed = 5
 
-    def move(self, axis, direction):
+    def move(self, axis, direction, file="assets/player.png"):
         '''
         moves to player based off its passed parameters
         args: (string) axis, (string) direction
@@ -25,9 +25,21 @@ class Player(pygame.sprite.Sprite):
         print("moved player")
         if axis == "x" and direction == "+1":
             self.rect.x += self.speed
+            self.changeImage(file)
         elif axis == "x" and direction == "-1":
             self.rect.x -= self.speed
+            self.changeImage(file)
         elif axis == "y" and direction == "+1":
+            self.changeImage(file)
             self.rect.y += self.speed
         elif axis == "y" and direction == "-1":
             self.rect.y -= self.speed
+            self.changeImage(file)
+
+    def changeImage(self, file):
+        '''
+        changes the sprite of the player to help with animation
+        args: (string) file
+        return: none
+        '''
+        self.image = pygame.image.load(file).convert_alpha()
