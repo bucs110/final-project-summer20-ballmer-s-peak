@@ -1,4 +1,5 @@
 import pygame
+from src import projectile
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, name, x, y, file):
@@ -13,3 +14,11 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.name = name
+
+    def shoot(self, projectilesGroup):
+        pass
+    def move(self):
+        self.rect.y += 1
+
+    def getProjectiles(self):
+        pass

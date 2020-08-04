@@ -14,7 +14,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.name = name
-        self.speed = 5
+        self.SPEED = 10
 
     def move(self, axis, direction, file="assets/player.png"):
         '''
@@ -22,18 +22,17 @@ class Player(pygame.sprite.Sprite):
         args: (string) axis, (string) direction
         return: none
         '''
-        print("moved player")
-        if axis == "x" and direction == "+1" and self.rect.x <550:
-            self.rect.x += self.speed
+        if axis == "x" and direction == "+1" and self.rect.x < 550:
+            self.rect.x += self.SPEED
             self.changeImage(file)
         elif axis == "x" and direction == "-1" and self.rect.x > -35:
-            self.rect.x -= self.speed
+            self.rect.x -= self.SPEED
             self.changeImage(file)
         elif axis == "y" and direction == "+1" and self.rect.y < 390:
             self.changeImage(file)
-            self.rect.y += self.speed
+            self.rect.y += self.SPEED
         elif axis == "y" and direction == "-1" and self.rect.y > -35:
-            self.rect.y -= self.speed
+            self.rect.y -= self.SPEED
             self.changeImage(file)
 
     def changeImage(self, file):
