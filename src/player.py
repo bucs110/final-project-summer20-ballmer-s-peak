@@ -15,6 +15,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y = y
         self.name = name
         self.SPEED = 10
+        self.health = 5
 
     def move(self, axis, direction, file="assets/player.png"):
         '''
@@ -42,3 +43,9 @@ class Player(pygame.sprite.Sprite):
         return: none
         '''
         self.image = pygame.image.load(file).convert_alpha()
+    def lowerHealth(self):
+        self.health -= 1
+        print ("Lives remaining:", self.health)
+    def checkHealth(self):
+        if self.health <= 0:
+            return True

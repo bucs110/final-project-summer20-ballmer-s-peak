@@ -29,6 +29,7 @@ class Controller:
         self.projectiles.add()
         self.enemyProjectiles = pygame.sprite.Group()
         self.state = "GAME"
+        self.score = 0
 
     def mainLoop(self):
         '''
@@ -83,8 +84,15 @@ class Controller:
             for bullet in self.projectiles:
                 if bullet.getType() == "player":
                     # kill the enemy if player's projectile hits it
-                    pygame.sprite.spritecollide(bullet, self.enemies, True)
-
+                    enemyHit = pygame.sprite.spritecollide(bullet, self.enemies, True)
+                    for i in enemyHit:
+                        self.score += 1
+                        print("The Score is:", self.score)
+                elif bullet.getType() == "enemy":
+                    isCollide = pygame.sprite.collide_rect(bullet, self.player)
+                    if isCollide == True:
+                        self.player.lowerHealth()
+                        self.projectiles.remove(bullet)
                 # if pygame.sprite.spritecollide(self.enemies, self.projectiles, True):
                 #     self.projectiles.remove(bullet)
             # pygame.sprite.groupcollide(self.enemies, self.projectiles, False, True)   # Handles collisions between the projectile and enemies
@@ -95,6 +103,7 @@ class Controller:
             self.screen.blit(self.player.image, self.player.rect.center)
             pygame.display.flip()
             self.clock.tick(self.FPS)
+            self.gameOver()
 
 
 
@@ -104,4 +113,9 @@ class Controller:
         args: none
         return: none
         '''
-        pass
+        if self.player.checkHealth() == True:
+            print ("game over")
+            self.state = "Game Over"
+            pygame.quit()
+            sys.exit()
+        #pass
