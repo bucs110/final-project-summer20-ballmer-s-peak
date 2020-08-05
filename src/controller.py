@@ -17,11 +17,14 @@ class Controller:
         self.width = width
         self.height = height
         self.screen = pygame.display.set_mode((self.width, self.height))
-        self.background = pygame.image.load("assets/galaxy.png").convert()
+        self.background1 = background.Background("assets/background1.png",0,0)
+        self.background1copy = background.Background("assets/background1copy.png",385,0)
+        self.background2 = background.Background("assets/background2.png",0,-500)
+        self.background2copy = background.Background("assets/background2copy.png",385,-500)
         self.clock = pygame.time.Clock()
         self.FPS = 30  # this final variable dictates the framerate at which the game should run
         self.ENEMY_SPEED = 5
-        self.player = player.Player("Player 1", 50, 80, "assets/player.png")
+        self.player = player.Player("Player 1", 250,375, "assets/player.png")
         self.enemies = pygame.sprite.Group()
         for i in range(0, 6):
             self.enemies.add(enemy.Enemy("Enemy", self.width / 5 * i, 20, "assets/enemy.png"))
@@ -80,7 +83,9 @@ class Controller:
                 self.projectiles.add(projectile.Projectile("player", self.player.rect.x + 60, self.player.rect.y + 16, "assets/projectile_minigun.png"))
             if not keys[pygame.K_UP] and not keys[pygame.K_w] and not keys[pygame.K_DOWN] and not keys[pygame.K_s] and not keys[pygame.K_LEFT] and not keys[pygame.K_a] and not keys[pygame.K_RIGHT] and not keys[pygame.K_d]:
                 self.player.changeImage("assets/player.png")
-
+            playerhit = pygame.sprite.spritecollide(self.player,self.enemies,True)
+            for i in playerhit:
+                self.player.lowerHealth()
             for bullet in self.projectiles:
                 if bullet.getType() == "player":
                     # kill the enemy if player's projectile hits it
@@ -96,11 +101,29 @@ class Controller:
                 # if pygame.sprite.spritecollide(self.enemies, self.projectiles, True):
                 #     self.projectiles.remove(bullet)
             # pygame.sprite.groupcollide(self.enemies, self.projectiles, False, True)   # Handles collisions between the projectile and enemies
+            if(self.background1.rect.y >=500):
+                self.background1.rect.y = -500
+                self.background1copy.rect.y = -500
+            if(self.background2.rect.y >=500):
+                self.background2.rect.y = -500
+                self.background2copy.rect.y = -500
+            self.background1.rect.y += 4
+            self.background1copy.rect.y += 4
+            self.background2.rect.y += 4
+            self.background2copy.rect.y += 4
             self.screen.fill((250, 250, 250))
-            self.screen.blit(self.background , (0, 0))
+            self.screen.blit(self.background1.image , self.background1.rect)
+            self.screen.blit(self.background1copy.image , self.background1copy.rect)
+            self.screen.blit(self.background2.image , self.background2.rect)
+            self.screen.blit(self.background2copy.image , self.background2copy.rect)
             self.enemies.draw(self.screen)
             self.projectiles.draw(self.screen)
             self.screen.blit(self.player.image, self.player.rect.center)
+            myfont = pygame.font.SysFont("8-Bit Madness",50)
+            livesremaining = myfont.render("Lives: " + str(self.player.health),1,(255,0,0))
+            self.screen.blit(livesremaining,(510,0))
+            score = myfont.render("Score: " + str(self.score),1,(255,0,0))
+            self.screen.blit(score,(0,0))
             pygame.display.flip()
             self.clock.tick(self.FPS)
             self.gameOver()

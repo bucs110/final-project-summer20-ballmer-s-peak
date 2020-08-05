@@ -49,3 +49,4 @@ class Player(pygame.sprite.Sprite):
     def checkHealth(self):
         if self.health <= 0:
             return True
+
