@@ -1,7 +1,6 @@
 import pygame
 import sys
 import random
-import threading
 from src import player
 from src import enemy
 from src import projectile
@@ -34,8 +33,6 @@ class Controller:
         self.enemyProjectiles = pygame.sprite.Group()
         self.state = "GAME"
         self.score = 0
-        self.ammo = 5
-        self.reload = threading.Event()
 
     def mainLoop(self):
         '''
@@ -84,7 +81,6 @@ class Controller:
                 self.player.move("x", "+1", "assets/player_right.png")
             if keys[pygame.K_SPACE] and self.ammo>0:
                 self.projectiles.add(projectile.Projectile("player", self.player.rect.x + 60, self.player.rect.y + 16, "assets/projectile_minigun.png"))
-                self.ammo-=1
             if not keys[pygame.K_UP] and not keys[pygame.K_w] and not keys[pygame.K_DOWN] and not keys[pygame.K_s] and not keys[pygame.K_LEFT] and not keys[pygame.K_a] and not keys[pygame.K_RIGHT] and not keys[pygame.K_d]:
                 self.player.changeImage("assets/player.png")
             playerhit = pygame.sprite.spritecollide(self.player,self.enemies,True)
@@ -105,10 +101,6 @@ class Controller:
                 # if pygame.sprite.spritecollide(self.enemies, self.projectiles, True):
                 #     self.projectiles.remove(bullet)
             # pygame.sprite.groupcollide(self.enemies, self.projectiles, False, True)   # Handles collisions between the projectile and enemies
-            while self.ammo <5:
-                self.reload.wait(.5)
-                self.ammo +=1
-
             if(self.background1.rect.y >=500):
                 self.background1.rect.y = -500
                 self.background1copy.rect.y = -500
