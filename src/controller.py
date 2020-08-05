@@ -79,7 +79,7 @@ class Controller:
                 self.player.move("x", "-1", "assets/player_left.png")
             if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
                 self.player.move("x", "+1", "assets/player_right.png")
-            if keys[pygame.K_SPACE] and self.ammo>0:
+            if keys[pygame.K_SPACE]:
                 self.projectiles.add(projectile.Projectile("player", self.player.rect.x + 60, self.player.rect.y + 16, "assets/projectile_minigun.png"))
             if not keys[pygame.K_UP] and not keys[pygame.K_w] and not keys[pygame.K_DOWN] and not keys[pygame.K_s] and not keys[pygame.K_LEFT] and not keys[pygame.K_a] and not keys[pygame.K_RIGHT] and not keys[pygame.K_d]:
                 self.player.changeImage("assets/player.png")
@@ -100,7 +100,7 @@ class Controller:
                         self.projectiles.remove(bullet)
                 # if pygame.sprite.spritecollide(self.enemies, self.projectiles, True):
                 #     self.projectiles.remove(bullet)
-            # pygame.sprite.groupcollide(self.enemies, self.projectiles, False, True)   # Handles collisions between the projectile and enemies
+            # pygame.sprite.groupcollide(self.enemies, self.projectiles, False, True)   # Handles collisions between the projectile and enemies`````````````````````````
             if(self.background1.rect.y >=500):
                 self.background1.rect.y = -500
                 self.background1copy.rect.y = -500
