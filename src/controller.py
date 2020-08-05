@@ -100,7 +100,7 @@ class Controller:
                         self.projectiles.remove(bullet)
                 # if pygame.sprite.spritecollide(self.enemies, self.projectiles, True):
                 #     self.projectiles.remove(bullet)
-            # pygame.sprite.groupcollide(self.enemies, self.projectiles, False, True)   # Handles collisions between the projectile and enemies
+            # pygame.sprite.groupcollide(self.enemies, self.projectiles, False, True)   # Handles collisions between the projectile and enemies`````````````````````````
             if(self.background1.rect.y >=500):
                 self.background1.rect.y = -500
                 self.background1copy.rect.y = -500
