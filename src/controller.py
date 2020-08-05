@@ -92,6 +92,7 @@ class Controller:
                     enemyHit = pygame.sprite.spritecollide(bullet, self.enemies, True)
                     for i in enemyHit:
                         self.score += 1
+                        self.projectiles.remove(bullet)
                         print("The Score is:", self.score)
                 elif bullet.getType() == "enemy":
                     isCollide = pygame.sprite.collide_rect(bullet, self.player)
