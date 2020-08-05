@@ -21,7 +21,7 @@ class Controller:
         self.clock = pygame.time.Clock()
         self.FPS = 30  # this final variable dictates the framerate at which the game should run
         self.ENEMY_SPEED = 5
-        self.player = player.Player("Player 1", 50, 80, "assets/player.png")
+        self.player = player.Player("Player 1", 250,375, "assets/player.png")
         self.enemies = pygame.sprite.Group()
         for i in range(0, 6):
             self.enemies.add(enemy.Enemy("Enemy", self.width / 5 * i, 20, "assets/enemy.png"))
@@ -80,7 +80,9 @@ class Controller:
                 self.projectiles.add(projectile.Projectile("player", self.player.rect.x + 60, self.player.rect.y + 16, "assets/projectile_minigun.png"))
             if not keys[pygame.K_UP] and not keys[pygame.K_w] and not keys[pygame.K_DOWN] and not keys[pygame.K_s] and not keys[pygame.K_LEFT] and not keys[pygame.K_a] and not keys[pygame.K_RIGHT] and not keys[pygame.K_d]:
                 self.player.changeImage("assets/player.png")
-
+            playerhit = pygame.sprite.spritecollide(self.player,self.enemies,True)
+            for i in playerhit:
+                self.player.lowerHealth()
             for bullet in self.projectiles:
                 if bullet.getType() == "player":
                     # kill the enemy if player's projectile hits it
