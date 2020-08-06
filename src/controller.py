@@ -28,7 +28,6 @@ class Controller:
         self.player = player.Player("Player 1", 250,375, "assets/player.png")
         self.enemies = pygame.sprite.Group()
         for i in range(1, 6):
-            print(i)
             self.enemies.add(enemy.Enemy("Enemy", self.width / 6 * i, 20, "assets/enemy.png"))
         self.projectiles = pygame.sprite.Group()
         self.projectiles.add()
@@ -64,7 +63,6 @@ class Controller:
         '''
         pygame.key.set_repeat(1, 50)
         while self.state == "GAME":
-            # print(len(self.enemies))
             if len(self.enemies) == 0:
                 self.difficulty += 1
                 for i in range(1, self.difficulty):
@@ -160,11 +158,11 @@ class Controller:
             pygame.mixer.Sound.play(self.gameOverSound)
             print("game over")
             print("Score : " + str(self.score))
-            option = input("enter again to play again or quit to quit")
+            option = input("Type 'again' to play again or 'quit' to quit:\n")
             if option == "again":
                 self.state = "AGAIN"
             elif option == "quit":
                 self.state = "GAME OVER"
+                print("Thanks for playing!")
                 pygame.quit()
                 sys.exit()
-        #pass
