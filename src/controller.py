@@ -39,6 +39,7 @@ class Controller:
         pygame.mixer.music.load("assets/game_maintheme.ogg")
         pygame.mixer.music.set_volume(.2)
         pygame.mixer.music.play(-1)
+        self.playagain = False
     def mainLoop(self):
         '''
         Runs the game
@@ -50,6 +51,10 @@ class Controller:
                 self.gameLoop()
             elif self.state == "GAME OVER":
                 self.gameOver()
+            elif self.state == "AGAIN":
+                again = Controller()
+                again.gameLoop()
+
 
     def gameLoop(self):
         '''
@@ -98,6 +103,7 @@ class Controller:
 
             for i in playerhit:
                 self.player.lowerHealth()
+                self.score +=1
 
             for bullet in self.projectiles:
                 if bullet.getType() == "player":
@@ -151,10 +157,13 @@ class Controller:
         '''
         if self.player.checkHealth() == True:
             pygame.mixer.Sound.play(self.gameOverSound)
-            time.sleep(1.8)
             print("game over")
-            self.state = "Game Over"
-            print("Your final score is", self.score)
-            pygame.quit()
-            sys.exit()
+            print("Score : " + str(self.score))
+            option = input("enter again to play again or quit to quit")
+            if option == "again":
+                self.state = "AGAIN"
+            elif option == "quit":
+                self.state = "GAME OVER"
+                pygame.quit()
+                sys.exit()
         #pass
