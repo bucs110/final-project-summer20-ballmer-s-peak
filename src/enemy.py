@@ -15,10 +15,10 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.y = y
         self.name = name
 
-    def shoot(self, projectilesGroup):
-        pass
     def move(self):
+        '''
+        moves the enemy sprite across the screen vertically
+        args: none
+        return: none
+        '''
         self.rect.y += 1
-
-    def getProjectiles(self):
-        pass
