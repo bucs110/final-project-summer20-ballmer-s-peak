@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+import time
 from src import player
 from src import enemy
 from src import projectile
@@ -33,7 +34,11 @@ class Controller:
         self.projectiles.add()
         self.state = "GAME"
         self.score = 0
-
+        self.explosionSound = pygame.mixer.Sound("assets/game_explosion.ogg")
+        self.gameOverSound = pygame.mixer.Sound("assets/game_gameover.ogg")
+        pygame.mixer.music.load("assets/game_maintheme.ogg")
+        pygame.mixer.music.set_volume(.2)
+        pygame.mixer.music.play(-1)
     def mainLoop(self):
         '''
         Runs the game
@@ -99,6 +104,7 @@ class Controller:
                     # kill the enemy if player's projectile hits it
                     enemyHit = pygame.sprite.spritecollide(bullet, self.enemies, True)
                     for i in enemyHit:
+                        pygame.mixer.Sound.play(self.explosionSound)
                         self.score += 1
                         self.projectiles.remove(bullet)
                         print("The Score is:", self.score)
@@ -144,6 +150,8 @@ class Controller:
         return: none
         '''
         if self.player.checkHealth() == True:
+            pygame.mixer.Sound.play(self.gameOverSound)
+            time.sleep(1.8)
             print("game over")
             self.state = "Game Over"
             print("Your final score is", self.score)
