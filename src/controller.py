@@ -72,10 +72,13 @@ class Controller:
                     self.projectiles.add(projectile.Projectile("enemy", item.rect.x + 60, item.rect.y + 16, "assets/projectile_laser.png"))
 
             for item in self.projectiles:  # projectile movement
-                if item.getType() == "player":
+                if item.getType() == "player" and (item.rect.y > -10):
                     item.move(-20)
-                elif item.getType() == "enemy":
+                elif item.getType() == "enemy" and (item.rect.y < 600):
                     item.move(20)
+                else:
+                    self.projectiles.remove(item)
+            print(len(self.projectiles))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
