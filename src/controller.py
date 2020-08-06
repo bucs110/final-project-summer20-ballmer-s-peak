@@ -156,6 +156,7 @@ class Controller:
         return: none
         '''
         if self.player.checkHealth() == True:
+            pygame.mixer.pause()
             pygame.mixer.Sound.play(self.gameOverSound)
             print("game over")
             print("Score : " + str(self.score))
