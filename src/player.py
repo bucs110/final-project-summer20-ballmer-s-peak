@@ -43,10 +43,21 @@ class Player(pygame.sprite.Sprite):
         return: none
         '''
         self.image = pygame.image.load(file).convert_alpha()
+
     def lowerHealth(self):
+        '''
+        lowers the health of the player
+        args: none
+        return: none
+        '''
         self.health -= 1
         print ("Lives remaining:", self.health)
+
     def checkHealth(self):
+        '''
+        helper function to check if healt is remaining
+        args: none
+        return: (bool) 
+        '''
         if self.health <= 0:
             return True
-
