@@ -23,14 +23,14 @@ class Controller:
         self.background2copy = background.Background("assets/background2copy.png",385,-500)
         self.clock = pygame.time.Clock()
         self.FPS = 30  # this final variable dictates the framerate at which the game should run
-        self.ENEMY_SPEED = 5
+        self.difficulty = 5
         self.player = player.Player("Player 1", 250,375, "assets/player.png")
         self.enemies = pygame.sprite.Group()
-        for i in range(0, 6):
-            self.enemies.add(enemy.Enemy("Enemy", self.width / 5 * i, 20, "assets/enemy.png"))
+        for i in range(1, 6):
+            print(i)
+            self.enemies.add(enemy.Enemy("Enemy", self.width / 6 * i, 20, "assets/enemy.png"))
         self.projectiles = pygame.sprite.Group()
         self.projectiles.add()
-        self.enemyProjectiles = pygame.sprite.Group()
         self.state = "GAME"
         self.score = 0
 
@@ -54,22 +54,28 @@ class Controller:
         '''
         pygame.key.set_repeat(1, 50)
         while self.state == "GAME":
-            for item in self.enemies:
+            # print(len(self.enemies))
+            if len(self.enemies) == 0:
+                self.difficulty += 1
+                for i in range(1, self.difficulty):
+                    self.enemies.add(enemy.Enemy("Enemy", random.randrange(10, 600), random.randrange(20, 60), "assets/enemy.png"))
+            for item in self.enemies:  # randomly makes the enemies shoot and move down towards the player
                 randomInt = random.randrange(1800)
                 if randomInt < 900:
                     item.move()
                 if randomInt < 60:
                     self.projectiles.add(projectile.Projectile("enemy", item.rect.x + 60, item.rect.y + 16, "assets/projectile_laser.png"))
-            for item in self.projectiles:  # Projectile movement
+
+            for item in self.projectiles:  # projectile movement
                 if item.getType() == "player":
                     item.move(-20)
                 elif item.getType() == "enemy":
                     item.move(20)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
-                if event.type == "":
-                    pass
+
             keys = pygame.key.get_pressed()
             if keys[pygame.K_UP] or keys[pygame.K_w]:
                 self.player.move("y", "-1")
@@ -84,8 +90,10 @@ class Controller:
             if not keys[pygame.K_UP] and not keys[pygame.K_w] and not keys[pygame.K_DOWN] and not keys[pygame.K_s] and not keys[pygame.K_LEFT] and not keys[pygame.K_a] and not keys[pygame.K_RIGHT] and not keys[pygame.K_d]:
                 self.player.changeImage("assets/player.png")
             playerhit = pygame.sprite.spritecollide(self.player,self.enemies,True)
+
             for i in playerhit:
                 self.player.lowerHealth()
+
             for bullet in self.projectiles:
                 if bullet.getType() == "player":
                     # kill the enemy if player's projectile hits it
@@ -98,15 +106,13 @@ class Controller:
                     if isCollide == True:
                         self.player.lowerHealth()
                         self.projectiles.remove(bullet)
-                # if pygame.sprite.spritecollide(self.enemies, self.projectiles, True):
-                #     self.projectiles.remove(bullet)
-            # pygame.sprite.groupcollide(self.enemies, self.projectiles, False, True)   # Handles collisions between the projectile and enemies`````````````````````````
             if(self.background1.rect.y >=500):
                 self.background1.rect.y = -500
                 self.background1copy.rect.y = -500
             if(self.background2.rect.y >=500):
                 self.background2.rect.y = -500
                 self.background2copy.rect.y = -500
+
             self.background1.rect.y += 4
             self.background1copy.rect.y += 4
             self.background2.rect.y += 4
@@ -137,8 +143,9 @@ class Controller:
         return: none
         '''
         if self.player.checkHealth() == True:
-            print ("game over")
+            print("game over")
             self.state = "Game Over"
+            print("Your final score is", self.score)
             pygame.quit()
             sys.exit()
         #pass
