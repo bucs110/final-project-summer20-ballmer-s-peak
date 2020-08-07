@@ -27,6 +27,7 @@ This game is space invaders-inspired, designed to have quickly increasing diffic
 * Class Interface Design
     * Diagram shows the class design in our game
         * ![class diagram](assets/class_diagram.png)
+        
 * Classes
     - Player Class: the player that can move around the screen and shoot projectiles
     - Enemy Class: the enemy that tries to kill the enemy by moving towards the player and shooting projectiles back
