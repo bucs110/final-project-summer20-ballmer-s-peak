@@ -1,11 +1,8 @@
-:warning: Everything between << >> needs to be replaced (remove << >> after replacing)
-
-# Space 
 ## CS 110 Final Project
 Summer, 2020
 ### [Assignment Description](https://drive.google.com/open?id=1HLIk-539N9KiAAG1224NWpFyEl4RsPVBwtBZ9KbjicE)
 
-<< [https://github.com/<repo>](#) >>
+https://github.com/bucs110/final-project-summer20-ballmer-s-peak
 
 https://docs.google.com/presentation/d/1k_T_v0HsIlZApdHQ84gtgVn8qB7TyKfM4W5yUh323kk/edit?usp=sharing
 
@@ -46,19 +43,21 @@ https://docs.google.com/presentation/d/1k_T_v0HsIlZApdHQ84gtgVn8qB7TyKfM4W5yUh32
 
 ### Software Lead - << name >>
 
-<< Worked as integration specialist by... >>
+Worked as integration specialist by making sure that each feature was integrated without breaking the rest of the game, creating the ATP, and assisting both the front end and back end specialists
 
-### Front End Specialist - << name >>
+### Front End Specialist - Matthew Sadowski
 
-<< Front-end lead conducted significant research on... >>
+Front-end lead conducted significant research on implementing the nice visual effects, infinite background, and other important GUI details. 
 
-### Back End Specialist - << name >>
 
-<< The back end specialist... >>
+### Back End Specialist - David Esses
+
+The backend specialist was responsible for creating many classes and implementing the data logic in the controller
+
 
 ## Testing
-* << Describe your testing strategy for your project. >>
-    * << Example >>
+Our testing strategy was to create features in small chunks and test them manually to make sure they don't break the rest of the game
+    * When creating the collision events with the enemy and projectiles, we needed to ensure that the projectiles didn't have side effects against the player or not working as intended
 
 | Step | Procedure                                                          | Expected Results                                                                                                                                                                                                                                                                                                 | Comments |
 |------|--------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
