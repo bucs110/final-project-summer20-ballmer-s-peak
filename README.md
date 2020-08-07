@@ -21,8 +21,6 @@ This game is space invaders-inspired, designed to have quickly increasing diffic
     * For example, if your program has a start screen, game screen, and game over screen, you should include a wireframe / screenshot / drawing of each one and a short description of the components
 ![class diagram](assets/class_diagram.png)
 
-***        
-
 ## Program Design
 * Non-Standard libraries
    We have not used non standard libraries for this game.
