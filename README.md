@@ -3,6 +3,7 @@ Summer, 2020
 ### [Assignment Description](https://drive.google.com/open?id=1HLIk-539N9KiAAG1224NWpFyEl4RsPVBwtBZ9KbjicE)
 
 Demo: https://drive.google.com/file/d/1gEwZ6O2iTNuxWPmF0IPhxa4F0_xoJB6s/view?usp=sharing
+
 Slides: https://docs.google.com/presentation/d/1k_T_v0HsIlZApdHQ84gtgVn8qB7TyKfM4W5yUh323kk/edit?usp=sharing
 
 ### Team: Ballmer's Peak
