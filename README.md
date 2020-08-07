@@ -37,8 +37,6 @@ This game is space invaders-inspired, designed to have quickly increasing diffic
 ***
 
 ## Tasks and Responsibilities
-* You must outline the team member roles and who was responsible for each class/method, both individual and collaborative.
-
 ### Software Lead - Ron Laniado
 
 Worked as integration specialist by making sure that each feature was integrated without breaking the rest of the game, creating the ATP, and assisting both the front end and back end specialists
