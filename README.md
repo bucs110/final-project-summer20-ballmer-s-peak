@@ -7,7 +7,7 @@ Summer, 2020
 
 << [https://github.com/<repo>](#) >>
 
-<< [link to demo presentation slides](#) >>
+https://docs.google.com/presentation/d/1k_T_v0HsIlZApdHQ84gtgVn8qB7TyKfM4W5yUh323kk/edit?usp=sharing
 
 ### Team: Ballmer's Peak
 #### David Esses, Matthew Sadowski, Ron Laniado
