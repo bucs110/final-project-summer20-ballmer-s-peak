@@ -19,7 +19,7 @@ This game is space invaders-inspired, designed to have quickly increasing diffic
 ## User Interface Design
 * << A wireframe or drawing of the user interface concept along with a short description of the interface. You should have one for each screen in your program. >>
     * For example, if your program has a start screen, game screen, and game over screen, you should include a wireframe / screenshot / drawing of each one and a short description of the components
-![class diagram](assets/class_diagram.jpg)
+![class diagram](assets/class_diagram.png)
 
 ***        
 
@@ -28,7 +28,7 @@ This game is space invaders-inspired, designed to have quickly increasing diffic
    We have not used non standard libraries for this game.
 * Class Interface Design
     * Diagram shows the class design in our game
-        * ![class diagram](assets/class_diagram.jpg)
+        * ![class diagram](assets/class_diagram.png)
 * Classes
     - Player Class: the player that can move around the screen and shoot projectiles
     - Enemy Class: the enemy that tries to kill the enemy by moving towards the player and shooting projectiles back
