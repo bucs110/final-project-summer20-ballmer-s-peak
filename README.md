@@ -12,36 +12,35 @@ https://docs.google.com/presentation/d/1k_T_v0HsIlZApdHQ84gtgVn8qB7TyKfM4W5yUh32
 ***
 
 ## Project Description
-<< Give an overview of your project >>
+This game is space invaders-inspired, designed to have quickly increasing difficulty while still remaining fun
 
 ***    
 
 ## User Interface Design
 * << A wireframe or drawing of the user interface concept along with a short description of the interface. You should have one for each screen in your program. >>
     * For example, if your program has a start screen, game screen, and game over screen, you should include a wireframe / screenshot / drawing of each one and a short description of the components
-* << You should also have a screenshot of each screen for your final GUI >>
+![class diagram](assets/class_diagram.jpg)
 
 ***        
 
 ## Program Design
 * Non-Standard libraries
-    * << You should have a list of any additional libraries or modules used (pygame, request) beyond non-standard python. >>
-    * For each additional module you should include
-        * url for the module documentation
-        * a short description of the module
+   We have not used non standard libraries for this game.
 * Class Interface Design
-    * << A simple drawing that shows the class relationships in your code (see below for an example). >>
+    * Diagram shows the class design in our game
         * ![class diagram](assets/class_diagram.jpg)
-    * This does not need to be overly detailed, but should show how your code fits into the Model/View/Controller paradigm.
 * Classes
-    * << You should have a list of each of your classes with a description. >>
+    - Player Class: the player that can move around the screen and shoot projectiles
+    - Enemy Class: the enemy that tries to kill the enemy by moving towards the player and shooting projectiles back
+    - Projectile Class: a class that is used by other classes to shoot bullets towards the other side of the screen
+    - Controller Class: creates groups of sprites and controls the logic between them
 
 ***
 
 ## Tasks and Responsibilities
 * You must outline the team member roles and who was responsible for each class/method, both individual and collaborative.
 
-### Software Lead - << name >>
+### Software Lead - Ron Laniado
 
 Worked as integration specialist by making sure that each feature was integrated without breaking the rest of the game, creating the ATP, and assisting both the front end and back end specialists
 
