@@ -81,7 +81,6 @@ class Controller:
                     item.move(20)
                 else:
                     self.projectiles.remove(item)
-            print(len(self.projectiles))
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
